@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "target": "ES2015",
+     "sourceMap": true,
+  },
+  "exclude": ["node_modules/**/*"]
+}
