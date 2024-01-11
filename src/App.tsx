@@ -10,6 +10,7 @@ export default function App(props: ConnectedProps<AppDuck>) {
       <main>
         main page content
       </main>
+      <footer>page footer</footer>
     </>
   )
 }
