@@ -4,10 +4,12 @@
     "build": "NODE_ENV=production webpack"
   },
   "dependencies": {
-    "observable-duck": "^0.1.19",
+    "antd": "^5.12.8",
+    "observable-duck": "^0.1.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
+    "react-router-dom": "^6.21.2",
     "redux": "^5.0.1",
     "redux-logger": "^3.0.6",
     "redux-observable-action": "^0.0.6",
@@ -30,6 +32,7 @@
     "webpack": "^5.89.0",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4",
+    "webpack-dashboard": "^3.3.8",
     "webpack-dev-server": "^4.15.1"
   }
 }

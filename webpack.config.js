@@ -11,12 +11,13 @@ const plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(mode),
   }),
-  new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-  })
 ]
 if (isDev) {
   plugins.push(new webpack.HotModuleReplacementPlugin())
+} else {
+  plugins.push(new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+  }))
 }
 
 /**
@@ -31,6 +32,7 @@ module.exports = {
     clean: true,
     filename: '[name].[contenthash].js',
   },
+  stats: 'normal',
   optimization: {
     splitChunks: {
       chunks: 'all',
@@ -67,9 +69,11 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [{
-          loader: 'ts-loader',
-        }]
+        use: [
+          {
+            loader: 'ts-loader',
+          }
+        ]
       },
       {
         include: /node_modules\/redux-logger/,
