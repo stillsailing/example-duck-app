@@ -6,6 +6,7 @@ import reportWebVitals from './plugin/report'
 import App from './App'
 import AppDuck from './AppDuck'
 import logger from './plugin/logger'
+import './app.css'
 
 reportWebVitals(console.log)
 

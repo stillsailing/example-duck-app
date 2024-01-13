@@ -33,6 +33,9 @@ module.exports = {
     filename: '[name].[contenthash].js',
   },
   stats: 'normal',
+  devServer: {
+    historyApiFallback: true,
+  },
   optimization: {
     splitChunks: {
       chunks: 'all',
@@ -40,7 +43,7 @@ module.exports = {
       maxInitialRequests: 10,
       cacheGroups: {
         react: {
-          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
           name: 'react',
           chunks: 'all',
           enforce: true,
@@ -79,7 +82,11 @@ module.exports = {
         include: /node_modules\/redux-logger/,
         // redux-logger do not set sideEffects to false, manually set sideEffects to false
         sideEffects: false,
-      }
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins,
