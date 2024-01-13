@@ -1,12 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const mode = process.env.NODE_ENV
 const isDev = mode === 'development'
 const plugins = [
   new HtmlWebpackPlugin({ template: "./src/template/index.html" }),
+  new MiniCssExtractPlugin(),
   new webpack.ProgressPlugin(),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(mode),
@@ -38,6 +41,7 @@ module.exports = {
     historyApiFallback: true,
   },
   optimization: {
+    minimizer: [new CssMinimizerPlugin()],
     splitChunks: {
       chunks: 'all',
       maxAsyncRequests: 20,
@@ -86,7 +90,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },
