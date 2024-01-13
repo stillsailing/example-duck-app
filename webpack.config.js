@@ -10,6 +10,7 @@ const plugins = [
   new webpack.ProgressPlugin(),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(mode),
+    'process.env.BASENAME': JSON.stringify(process.env.BASENAME),
   }),
 ]
 if (isDev) {

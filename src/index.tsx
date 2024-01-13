@@ -12,7 +12,7 @@ reportWebVitals(console.log)
 
 const ConnectedApp = Runtime.create(AppDuck, { middlewares: [logger] }).connect(App)
 ReactDom.createRoot(document.querySelector('#duck-app')).render(
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.BASENAME || ''}>
     <ConnectedApp />
   </BrowserRouter>
 )

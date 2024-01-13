@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "NODE_ENV=development webpack serve",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "build-github": "NODE_ENV=production BASENAME=example-duck-app webpack"
   },
   "dependencies": {
     "antd": "^5.12.8",
