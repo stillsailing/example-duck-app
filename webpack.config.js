@@ -1,13 +1,15 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin').WebpackManifestPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const mode = process.env.NODE_ENV
 const isDev = mode === 'development'
 const plugins = [
+  new ManifestPlugin(),
   new HtmlWebpackPlugin({ template: "./src/template/index.html" }),
   new MiniCssExtractPlugin(),
   new webpack.ProgressPlugin(),
@@ -36,7 +38,7 @@ module.exports = {
     clean: true,
     filename: '[name].[contenthash].js',
   },
-  stats: 'normal',
+  stats: 'summary',
   devServer: {
     historyApiFallback: true,
   },
