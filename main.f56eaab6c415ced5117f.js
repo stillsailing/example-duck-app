@@ -12,8 +12,6 @@ var react = __webpack_require__(7294);
 var client = __webpack_require__(745);
 // EXTERNAL MODULE: ./node_modules/react-router-dom/dist/index.js
 var dist = __webpack_require__(9655);
-// EXTERNAL MODULE: ./node_modules/observable-duck/build/observable-duck.mjs + 1 modules
-var observable_duck = __webpack_require__(8561);
 ;// CONCATENATED MODULE: ./src/plugin/report.ts
 function reportWebVitals(onPerfEntry) {
     if (onPerfEntry && onPerfEntry instanceof Function) {
@@ -28,6 +26,52 @@ function reportWebVitals(onPerfEntry) {
 }
 /* harmony default export */ const report = (reportWebVitals);
 
+// EXTERNAL MODULE: ./node_modules/observable-duck/build/observable-duck.mjs + 1 modules
+var observable_duck = __webpack_require__(8561);
+;// CONCATENATED MODULE: ./src/AppDuck.ts
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+class AppBase extends observable_duck/* Base */.XY {
+    get quickTypes() {
+        let Type;
+        (function (Type) {
+            Type[Type["UPDATE"] = 0] = "UPDATE";
+        })(Type || (Type = {}));
+        return Object.assign({}, Type);
+    }
+    get reducers() {
+        const types = this.types;
+        return {
+            stamp: (0,observable_duck/* reduceFromPayload */.B6)(types.UPDATE, Date.now()),
+            version: (state = '1.0') => state,
+        };
+    }
+    watchUpdate(action$) {
+        const duck = this;
+        return action$.pipe((0,observable_duck/* filterAction */.Ot)(duck.types.UPDATE)).subscribe(() => {
+            const state = duck.getState();
+            console.log('App Updated!');
+        });
+    }
+}
+__decorate([
+    (0,observable_duck/* StreamerMethod */.Q8)()
+], AppBase.prototype, "watchUpdate", null);
+class AppDuck extends AppBase {
+    get quickTypes() {
+        let Type;
+        (function (Type) {
+            Type[Type["UPDATE"] = 0] = "UPDATE";
+        })(Type || (Type = {}));
+        return Object.assign(Object.assign({}, super.quickTypes), Type);
+    }
+}
+
 // EXTERNAL MODULE: ./node_modules/react-router/dist/index.js
 var react_router_dist = __webpack_require__(9250);
 ;// CONCATENATED MODULE: ./src/routes/index/Template.tsx
@@ -40,7 +84,7 @@ function Index(props) {
 }
 
 ;// CONCATENATED MODULE: ./src/routes/index/Duck.ts
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var Duck_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
@@ -70,7 +114,7 @@ class Duck_Index extends observable_duck/* Base */.XY {
         });
     }
 }
-__decorate([
+Duck_decorate([
     (0,observable_duck/* StreamerMethod */.Q8)()
 ], Duck_Index.prototype, "watchUpdate", null);
 
@@ -100,7 +144,7 @@ function About(props) {
 }
 
 ;// CONCATENATED MODULE: ./src/routes/about/Duck.ts
-var Duck_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+var about_Duck_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
@@ -130,7 +174,7 @@ class Duck_About extends observable_duck/* Base */.XY {
         });
     }
 }
-Duck_decorate([
+about_Duck_decorate([
     (0,observable_duck/* StreamerMethod */.Q8)()
 ], Duck_About.prototype, "watchUpdate", null);
 
@@ -157,8 +201,8 @@ function RegisteredRouter() {
 
 // EXTERNAL MODULE: ./node_modules/@ant-design/icons/es/icons/SettingOutlined.js + 1 modules
 var SettingOutlined = __webpack_require__(4616);
-// EXTERNAL MODULE: ./node_modules/antd/es/menu/index.js + 207 modules
-var menu = __webpack_require__(3344);
+// EXTERNAL MODULE: ./node_modules/antd/es/menu/index.js + 118 modules
+var menu = __webpack_require__(5304);
 ;// CONCATENATED MODULE: ./src/components/layout/Menu.tsx
 
 
@@ -222,63 +266,25 @@ const AppMenu = () => {
 };
 /* harmony default export */ const Menu = (AppMenu);
 
+// EXTERNAL MODULE: ./node_modules/antd/es/layout/index.js + 4 modules
+var layout = __webpack_require__(712);
 ;// CONCATENATED MODULE: ./src/App.tsx
 
 
 
-function App(props) {
-    const { duck, store, dispatch } = props;
-    return (react.createElement(react.Fragment, null,
-        react.createElement("header", { className: 'app-header' },
+
+
+
+
+const { Header, Footer, Content } = layout["default"];
+function App() {
+    const { duck, store, dispatch } = (0,observable_duck/* useDuck */.KS)(AppDuck);
+    return (react.createElement(layout["default"], { className: 'app-layout' },
+        react.createElement(Header, { className: 'app-header' },
             react.createElement(Menu, null)),
-        react.createElement("main", { className: 'app-section' },
-            react.createElement("section", null,
-                react.createElement(RegisteredRouter, null))),
-        react.createElement("footer", { className: 'app-footer' }, "page footer")));
-}
-
-;// CONCATENATED MODULE: ./src/AppDuck.ts
-var AppDuck_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-class AppBase extends observable_duck/* Base */.XY {
-    get quickTypes() {
-        let Type;
-        (function (Type) {
-            Type[Type["UPDATE"] = 0] = "UPDATE";
-        })(Type || (Type = {}));
-        return Object.assign({}, Type);
-    }
-    get reducers() {
-        const types = this.types;
-        return {
-            stamp: (0,observable_duck/* reduceFromPayload */.B6)(types.UPDATE, Date.now()),
-            version: (state = '1.0') => state,
-        };
-    }
-    watchUpdate(action$) {
-        const duck = this;
-        return action$.pipe((0,observable_duck/* filterAction */.Ot)(duck.types.UPDATE)).subscribe(() => {
-            const state = duck.getState();
-            console.log('App Updated!');
-        });
-    }
-}
-AppDuck_decorate([
-    (0,observable_duck/* StreamerMethod */.Q8)()
-], AppBase.prototype, "watchUpdate", null);
-class AppDuck extends AppBase {
-    get quickTypes() {
-        let Type;
-        (function (Type) {
-            Type[Type["UPDATE"] = 0] = "UPDATE";
-        })(Type || (Type = {}));
-        return Object.assign(Object.assign({}, super.quickTypes), Type);
-    }
+        react.createElement(Content, { className: 'app-content' },
+            react.createElement(RegisteredRouter, null)),
+        react.createElement(Footer, { className: 'app-footer' }, "Footer")));
 }
 
 ;// CONCATENATED MODULE: ./src/index.tsx
@@ -287,14 +293,9 @@ class AppDuck extends AppBase {
 
 
 
-
-
-
-
 report(console.log);
-const ConnectedApp = observable_duck/* Runtime */.r_.create(AppDuck, { middlewares: [plugin_logger] }).connect(App);
 client/* createRoot */.s(document.querySelector('#duck-app')).render(react.createElement(dist/* BrowserRouter */.VK, { basename: "example-duck-app" || 0 },
-    react.createElement(ConnectedApp, null)));
+    react.createElement(App, null)));
 
 
 /***/ })
