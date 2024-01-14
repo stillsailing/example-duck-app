@@ -1,22 +1,24 @@
 import * as React from 'react'
-import { ConnectedProps } from 'observable-duck'
+import { useDuck } from 'observable-duck'
 import AppDuck from './AppDuck'
 import RegisteredRouter from './routes/RegisteredRouter'
 import AppMenu from './components/layout/Menu'
+import { Layout } from 'antd'
+import './app.css'
 
-export default function App(props: ConnectedProps<AppDuck>) {
-  const { duck, store, dispatch } = props
+const { Header, Footer, Content } = Layout;
+
+export default function App() {
+  const { duck, store, dispatch } = useDuck(AppDuck)
   return (
-    <>
-      <header className='app-header'>
+    <Layout className='app-layout'>
+      <Header className='app-header'>
         <AppMenu />
-      </header>
-      <main className='app-section'>
-        <section>
-          <RegisteredRouter />
-        </section>
-      </main>
-      <footer className='app-footer'>page footer</footer>
-    </>
+      </Header>
+      <Content className='app-content'>
+        <RegisteredRouter />
+      </Content>
+      <Footer className='app-footer'>Footer</Footer>
+    </Layout>
   )
 }

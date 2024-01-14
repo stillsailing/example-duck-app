@@ -4,9 +4,18 @@ body {
   background-color: #fff;
 }
 
-.app-section {
-  padding: 10px;
+.app-layout {
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+.app-header {
+  background: unset;
+  padding: 0;
+}
+
+.app-content {
+  padding: 10px;
 }
 
 .app-footer {

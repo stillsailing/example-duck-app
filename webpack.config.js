@@ -6,12 +6,33 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin').WebpackManifestPlugin
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
+class DevManifestPlugin {
+  /**
+   * @param {import('webpack').Compiler} compiler 
+   */
+  apply(compiler) {
+    const chunks = []
+    compiler.hooks.emit.tapAsync('DevManifestPlugin', (compilation, callback) => {
+      compilation.chunks.forEach((chunk) => {
+        chunk.files.forEach(filename => {
+          chunks.push(filename)
+        })
+      })
+      console.log('\n')
+      chunks.forEach(chunk => {
+        console.log(`%chttp://localhost:8080/${chunk}`, 'text-decoration: underline; color: #1677ff')
+      })
+      callback()
+    })
+  };
+}
+
 const mode = process.env.NODE_ENV
 const isDev = mode === 'development'
 const plugins = [
   new ManifestPlugin(),
   new HtmlWebpackPlugin({ template: "./src/template/index.html" }),
-  new MiniCssExtractPlugin(),
+  new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   new webpack.ProgressPlugin(),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(mode),
@@ -20,6 +41,7 @@ const plugins = [
 ]
 if (isDev) {
   plugins.push(new webpack.HotModuleReplacementPlugin())
+  plugins.push(new DevManifestPlugin())
 } else {
   plugins.push(new BundleAnalyzerPlugin({
     analyzerMode: 'static',
@@ -97,4 +119,4 @@ module.exports = {
     ],
   },
   plugins,
-};
+}
