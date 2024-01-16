@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2434:
+/***/ 6988:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -16,8 +16,8 @@ var dist = __webpack_require__(9655);
 var config_provider = __webpack_require__(6854);
 // EXTERNAL MODULE: ./node_modules/antd/es/theme/index.js + 6 modules
 var theme = __webpack_require__(9372);
-// EXTERNAL MODULE: ./node_modules/antd/es/app/index.js + 101 modules
-var app = __webpack_require__(606);
+// EXTERNAL MODULE: ./node_modules/antd/es/app/index.js + 72 modules
+var app = __webpack_require__(1674);
 ;// CONCATENATED MODULE: ./src/plugin/report.ts
 function reportWebVitals(onPerfEntry) {
     if (onPerfEntry && onPerfEntry instanceof Function) {
@@ -32,18 +32,18 @@ function reportWebVitals(onPerfEntry) {
 }
 /* harmony default export */ const report = (reportWebVitals);
 
-;// CONCATENATED MODULE: ./src/plugin/darkmode.js
-
+;// CONCATENATED MODULE: ./src/plugin/darkmode.ts
 function loadDarkMode() {
-  window.addEventListener('load', () => {
-    __webpack_require__.e(/* import() */ 736).then(__webpack_require__.t.bind(__webpack_require__, 630, 23)).then(({ default: DarkMode }) => {
-      new DarkMode({
-        time: '0.5s',
-        label: '🌓',
-      }).showWidget()
-    })
-  })
+    window.addEventListener('load', () => {
+        __webpack_require__.e(/* import() */ 736).then(__webpack_require__.t.bind(__webpack_require__, 630, 23)).then(({ default: DarkMode }) => {
+            new DarkMode({
+                time: '0.5s',
+                label: '🌓',
+            }).showWidget();
+        });
+    });
 }
+
 // EXTERNAL MODULE: ./node_modules/observable-duck/build/observable-duck.mjs + 1 modules
 var observable_duck = __webpack_require__(8561);
 ;// CONCATENATED MODULE: ./src/AppDuck.ts
@@ -92,9 +92,32 @@ class AppDuck extends AppBase {
 
 // EXTERNAL MODULE: ./node_modules/react-router/dist/index.js
 var react_router_dist = __webpack_require__(9250);
+// EXTERNAL MODULE: ./node_modules/antd/es/spin/index.js + 2 modules
+var spin = __webpack_require__(2507);
+;// CONCATENATED MODULE: ./src/components/layout/Spin.tsx
+
+
+
+function AppContentSpin() {
+    return (react.createElement("div", { className: 'app-content-spin' },
+        react.createElement(spin/* default */.Z, { size: 'large' })));
+}
+
+// EXTERNAL MODULE: ./node_modules/antd/es/result/index.js + 6 modules
+var result = __webpack_require__(1739);
+// EXTERNAL MODULE: ./node_modules/antd/es/button/index.js + 16 modules
+var es_button = __webpack_require__(9641);
+;// CONCATENATED MODULE: ./src/routes/404/Index.tsx
+
+
+
+const NotFount = () => (react.createElement(result/* default */.ZP, { status: '404', title: '404', subTitle: 'Sorry, the page you visited does not exist.', extra: react.createElement(es_button/* default */.ZP, { type: 'primary' },
+        react.createElement(dist/* Link */.rU, { to: '/' }, "Back Home")) }));
+/* harmony default export */ const Index = (NotFount);
+
 ;// CONCATENATED MODULE: ./src/routes/index/Template.tsx
 
-function Index(props) {
+function Template_Index(props) {
     const { duck, store, dispatch } = props;
     const [state, setState] = react.useState(true);
     return (react.createElement(react.Fragment, null,
@@ -136,85 +159,35 @@ Duck_decorate([
     (0,observable_duck/* StreamerMethod */.Q8)()
 ], Duck_Index.prototype, "watchUpdate", null);
 
-;// CONCATENATED MODULE: ./src/plugin/logger.ts
+// EXTERNAL MODULE: ./src/plugin/logger.ts
+var logger = __webpack_require__(9118);
+;// CONCATENATED MODULE: ./src/utils/connect.ts
 
-let logger;
-if (false) {}
-else {
-    logger = () => next => action => next(action);
+
+function connect(Duck, Component) {
+    return observable_duck/* Runtime */.r_.create(Duck, { middlewares: [logger/* default */.Z] }).connect(Component);
 }
-/* harmony default export */ const plugin_logger = (logger);
 
 ;// CONCATENATED MODULE: ./src/routes/index/index.ts
 
 
 
-
-/* harmony default export */ const index = (observable_duck/* Runtime */.r_.create(Duck_Index, { middlewares: [plugin_logger] }).connect(Index));
-
-;// CONCATENATED MODULE: ./src/routes/about/Template.tsx
-
-function About(props) {
-    const { duck, store, dispatch } = props;
-    const [state, setState] = react.useState(true);
-    return (react.createElement(react.Fragment, null,
-        react.createElement("h2", null, "About Page")));
-}
-
-;// CONCATENATED MODULE: ./src/routes/about/Duck.ts
-var about_Duck_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-class Duck_About extends observable_duck/* Base */.XY {
-    get quickTypes() {
-        let Type;
-        (function (Type) {
-            Type[Type["UPDATE"] = 0] = "UPDATE";
-        })(Type || (Type = {}));
-        return Object.assign({}, Type);
-    }
-    get reducers() {
-        const types = this.types;
-        return {
-            stamp: (0,observable_duck/* reduceFromPayload */.B6)(types.UPDATE, Date.now()),
-            version: (state = '1.0') => state,
-        };
-    }
-    watchUpdate(action$) {
-        const duck = this;
-        return action$.pipe((0,observable_duck/* filterAction */.Ot)(duck.types.UPDATE)).subscribe(() => {
-            const state = duck.getState();
-            console.log('Personal Updated!');
-        });
-    }
-}
-about_Duck_decorate([
-    (0,observable_duck/* StreamerMethod */.Q8)()
-], Duck_About.prototype, "watchUpdate", null);
-
-;// CONCATENATED MODULE: ./src/routes/about/index.ts
-
-
-
-
-/* harmony default export */ const about = (observable_duck/* Runtime */.r_.create(Duck_About, { middlewares: [plugin_logger] }).connect(About));
+/* harmony default export */ const index = (connect(Duck_Index, Template_Index));
 
 ;// CONCATENATED MODULE: ./src/routes/RegisteredRouter.tsx
 
 
 
 
+
 function RegisteredRouter() {
-    return react.createElement(react.Fragment, null,
-        react.createElement(react_router_dist/* Routes */.Z5, null,
-            react.createElement(react_router_dist/* Route */.AW, { path: "/" },
-                react.createElement(react_router_dist/* Route */.AW, { index: true, Component: index }),
-                react.createElement(react_router_dist/* Route */.AW, { path: "about", Component: about }),
-                react.createElement(react_router_dist/* Route */.AW, { path: "*", element: react.createElement("section", null, "Page Not Found") }))));
+    return (react.createElement(react.Fragment, null,
+        react.createElement(react.Suspense, { fallback: react.createElement(AppContentSpin, null) },
+            react.createElement(react_router_dist/* Routes */.Z5, null,
+                react.createElement(react_router_dist/* Route */.AW, { path: '/' },
+                    react.createElement(react_router_dist/* Route */.AW, { index: true, Component: index }),
+                    react.createElement(react_router_dist/* Route */.AW, { path: 'about', Component: react.lazy(() => __webpack_require__.e(/* import() | main-about */ 473).then(__webpack_require__.bind(__webpack_require__, 677))) }),
+                    react.createElement(react_router_dist/* Route */.AW, { path: '*', Component: Index }))))));
 }
 
 // EXTERNAL MODULE: ./node_modules/antd/es/menu/index.js + 83 modules
@@ -280,6 +253,23 @@ client/* createRoot */.s(document.querySelector('#duck-app')).render(react.creat
     react.createElement(config_provider/* default */.ZP, { theme: { algorithm: theme/* default */.Z.defaultAlgorithm } },
         react.createElement(app/* default */.Z, null,
             react.createElement(App, null)))));
+
+
+/***/ }),
+
+/***/ 9118:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+let logger;
+if (false) {}
+else {
+    logger = () => next => action => next(action);
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (logger);
 
 
 /***/ })
@@ -402,10 +392,33 @@ client/* createRoot */.s(document.querySelector('#duck-app')).render(react.creat
 /******/ 	
 /******/ 	/* webpack/runtime/ensure chunk */
 /******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
 /******/ 		// The chunk loading function for additional chunks
-/******/ 		// Since all referenced chunks are already included
-/******/ 		// in this file, this function is empty here.
-/******/ 		__webpack_require__.e = () => (Promise.resolve());
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + "main-about" + "." + "e50b4707b0e11421a993" + ".js";
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get mini-css chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.miniCssF = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return undefined;
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -425,6 +438,52 @@ client/* createRoot */.s(document.querySelector('#duck-app')).render(react.creat
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		// data-webpack is not used as build has no uniqueName
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 		
+/******/ 		
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -434,6 +493,29 @@ client/* createRoot */.s(document.querySelector('#duck-app')).render(react.creat
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -447,7 +529,44 @@ client/* createRoot */.s(document.querySelector('#duck-app')).render(react.creat
 /******/ 			179: 0
 /******/ 		};
 /******/ 		
-/******/ 		// no chunk on demand loading
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						}
+/******/ 					}
+/******/ 				}
+/******/ 		};
 /******/ 		
 /******/ 		// no prefetching
 /******/ 		
@@ -494,7 +613,7 @@ client/* createRoot */.s(document.querySelector('#duck-app')).render(react.creat
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [514,348,736], () => (__webpack_require__(2434)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [514,348,736], () => (__webpack_require__(6988)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
