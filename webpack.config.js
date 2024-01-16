@@ -45,9 +45,8 @@ if (isDev) {
   plugins.push(new webpack.HotModuleReplacementPlugin())
   plugins.push(new DevManifestPlugin())
 } else {
-  plugins.push(new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-  }))
+  plugins.push(new CssMinimizerPlugin())
+  plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }))
 }
 
 /**
@@ -67,7 +66,6 @@ module.exports = {
     historyApiFallback: true,
   },
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
     splitChunks: {
       chunks: 'all',
       maxAsyncRequests: 20,
