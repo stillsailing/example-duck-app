@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useDuck } from 'observable-duck'
 import AppDuck from './AppDuck'
-import RegisteredRouter from './routes/RegisteredRouter'
+import RegisteredRouter from '@src/routes/RegisteredRouter'
 import AppMenu from './components/layout/Menu'
 import { Layout, Flex } from 'antd'
 import './app.css'

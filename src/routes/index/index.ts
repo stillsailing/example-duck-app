@@ -1,8 +1,5 @@
-import { Runtime } from "observable-duck";
-import Template from "./Template";
-import Duck from "./Duck";
-import logger from "../../plugin/logger";
+import Template from './Template'
+import Duck from './Duck'
+import connect from '@src/utils/connect'
 
-export default Runtime.create(Duck, { middlewares: [logger] }).connect(
-  Template
-);
+export default connect(Duck, Template)

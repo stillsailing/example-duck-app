@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin').WebpackManifestPlugin
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
 
 class DevManifestPlugin {
   /**
@@ -31,6 +32,7 @@ const mode = process.env.NODE_ENV
 const isDev = mode === 'development'
 const plugins = [
   new ManifestPlugin(),
+  new FriendlyErrorsWebpackPlugin(),
   new HtmlWebpackPlugin({ template: "./src/template/index.html" }),
   new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   new webpack.ProgressPlugin(),
@@ -95,6 +97,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '@src': path.resolve(__dirname, 'src/'),
+      '@src/utils': path.resolve(__dirname, 'src/utils/'),
+    }
   },
   module: {
     rules: [

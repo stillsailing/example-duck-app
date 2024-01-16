@@ -1,4 +1,3 @@
-
 export default function loadDarkMode() {
   window.addEventListener('load', () => {
     import('darkmode-js').then(({ default: DarkMode }) => {

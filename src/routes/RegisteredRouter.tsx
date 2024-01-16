@@ -1,16 +1,24 @@
-import * as React from "react"
-import { Routes, Route } from "react-router-dom"
-import Index from "./index"
-import About from "./about"
+import * as React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Spin from '../components/layout/Spin'
+import NotFound from './404/Index'
+import Index from './index'
 
 export default function RegisteredRouter() {
-  return <>
-    <Routes>
-      <Route path="/">
-        <Route index Component={Index} />
-        <Route path="about" Component={About} />
-        <Route path="*" element={<section>Page Not Found</section>} />
-      </Route>
-    </Routes>
-  </>
+  return (
+    <>
+      <React.Suspense fallback={<Spin />}>
+        <Routes>
+          <Route path='/'>
+            <Route index Component={Index} />
+            <Route
+              path='about'
+              Component={React.lazy(() => import(/* webpackChunkName: "main-about" */ './about'))}
+            />
+            <Route path='*' Component={NotFound} />
+          </Route>
+        </Routes>
+      </React.Suspense>
+    </>
+  )
 }
