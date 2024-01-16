@@ -1,4 +1,4 @@
-body {
+html, body {
   padding: 0;
   margin: 0;
   background-color: #fff;
@@ -6,11 +6,9 @@ body {
 
 .app-layout {
   max-width: 1000px;
-  margin: 0 auto;
 }
 
 .app-header {
-  background: unset;
   padding: 0;
 }
 
