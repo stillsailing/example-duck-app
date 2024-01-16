@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 7093:
+/***/ 2434:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -12,6 +12,12 @@ var react = __webpack_require__(7294);
 var client = __webpack_require__(745);
 // EXTERNAL MODULE: ./node_modules/react-router-dom/dist/index.js
 var dist = __webpack_require__(9655);
+// EXTERNAL MODULE: ./node_modules/antd/es/config-provider/index.js + 8 modules
+var config_provider = __webpack_require__(6854);
+// EXTERNAL MODULE: ./node_modules/antd/es/theme/index.js + 6 modules
+var theme = __webpack_require__(9372);
+// EXTERNAL MODULE: ./node_modules/antd/es/app/index.js + 101 modules
+var app = __webpack_require__(606);
 ;// CONCATENATED MODULE: ./src/plugin/report.ts
 function reportWebVitals(onPerfEntry) {
     if (onPerfEntry && onPerfEntry instanceof Function) {
@@ -26,6 +32,18 @@ function reportWebVitals(onPerfEntry) {
 }
 /* harmony default export */ const report = (reportWebVitals);
 
+;// CONCATENATED MODULE: ./src/plugin/darkmode.js
+
+function loadDarkMode() {
+  window.addEventListener('load', () => {
+    __webpack_require__.e(/* import() */ 736).then(__webpack_require__.t.bind(__webpack_require__, 630, 23)).then(({ default: DarkMode }) => {
+      new DarkMode({
+        time: '0.5s',
+        label: '🌓',
+      }).showWidget()
+    })
+  })
+}
 // EXTERNAL MODULE: ./node_modules/observable-duck/build/observable-duck.mjs + 1 modules
 var observable_duck = __webpack_require__(8561);
 ;// CONCATENATED MODULE: ./src/AppDuck.ts
@@ -199,61 +217,19 @@ function RegisteredRouter() {
                 react.createElement(react_router_dist/* Route */.AW, { path: "*", element: react.createElement("section", null, "Page Not Found") }))));
 }
 
-// EXTERNAL MODULE: ./node_modules/@ant-design/icons/es/icons/SettingOutlined.js + 1 modules
-var SettingOutlined = __webpack_require__(4616);
-// EXTERNAL MODULE: ./node_modules/antd/es/menu/index.js + 118 modules
-var menu = __webpack_require__(5304);
+// EXTERNAL MODULE: ./node_modules/antd/es/menu/index.js + 83 modules
+var menu = __webpack_require__(8446);
 ;// CONCATENATED MODULE: ./src/components/layout/Menu.tsx
-
 
 
 
 const items = [
     {
-        label: 'Navigation Three - Submenu',
-        key: 'SubMenu',
-        icon: react.createElement(SettingOutlined/* default */.Z, null),
-        children: [
-            {
-                type: 'group',
-                label: 'Item 1',
-                children: [
-                    {
-                        label: 'Option 1',
-                        key: 'setting:1',
-                    },
-                    {
-                        label: 'Option 2',
-                        key: 'setting:2',
-                    },
-                ],
-            },
-            {
-                type: 'group',
-                label: 'Item 2',
-                children: [
-                    {
-                        label: 'Option 3',
-                        key: 'setting:3',
-                    },
-                    {
-                        label: 'Option 4',
-                        key: 'setting:4',
-                    },
-                ],
-            },
-        ],
-    },
-    {
         label: react.createElement(dist/* Link */.rU, { to: '/' }, "Main"),
         key: 'main',
     },
     {
-        label: react.createElement("a", { "data-nav": true, href: '/about' }, "About"),
-        key: 'about-a',
-    },
-    {
-        label: react.createElement(dist/* Link */.rU, { to: '/about' }, "About Link"),
+        label: react.createElement(dist/* Link */.rU, { to: '/about' }, "About"),
         key: 'about',
     },
 ];
@@ -262,12 +238,14 @@ const AppMenu = () => {
     const onClick = (e) => {
         setCurrent(e.key);
     };
-    return react.createElement(menu/* default */.Z, { onClick: onClick, selectedKeys: [current], mode: "horizontal", items: items });
+    return react.createElement(menu/* default */.Z, { onClick: onClick, selectedKeys: [current], mode: 'horizontal', items: items });
 };
 /* harmony default export */ const Menu = (AppMenu);
 
 // EXTERNAL MODULE: ./node_modules/antd/es/layout/index.js + 4 modules
 var layout = __webpack_require__(712);
+// EXTERNAL MODULE: ./node_modules/antd/es/flex/index.js + 3 modules
+var flex = __webpack_require__(2080);
 ;// CONCATENATED MODULE: ./src/App.tsx
 
 
@@ -279,12 +257,13 @@ var layout = __webpack_require__(712);
 const { Header, Footer, Content } = layout["default"];
 function App() {
     const { duck, store, dispatch } = (0,observable_duck/* useDuck */.KS)(AppDuck);
-    return (react.createElement(layout["default"], { className: 'app-layout' },
-        react.createElement(Header, { className: 'app-header' },
-            react.createElement(Menu, null)),
-        react.createElement(Content, { className: 'app-content' },
-            react.createElement(RegisteredRouter, null)),
-        react.createElement(Footer, { className: 'app-footer' }, "Footer")));
+    return (react.createElement(flex/* default */.Z, { justify: 'center' },
+        react.createElement(layout["default"], { className: 'app-layout' },
+            react.createElement(Header, { className: 'app-header' },
+                react.createElement(Menu, null)),
+            react.createElement(Content, { className: 'app-content' },
+                react.createElement(RegisteredRouter, null)),
+            react.createElement(Footer, { className: 'app-footer' }, "Footer"))));
 }
 
 ;// CONCATENATED MODULE: ./src/index.tsx
@@ -293,9 +272,14 @@ function App() {
 
 
 
+
+
 report(console.log);
+loadDarkMode();
 client/* createRoot */.s(document.querySelector('#duck-app')).render(react.createElement(dist/* BrowserRouter */.VK, { basename: "example-duck-app" || 0 },
-    react.createElement(App, null)));
+    react.createElement(config_provider/* default */.ZP, { theme: { algorithm: theme/* default */.Z.defaultAlgorithm } },
+        react.createElement(app/* default */.Z, null,
+            react.createElement(App, null)))));
 
 
 /***/ })
@@ -510,7 +494,7 @@ client/* createRoot */.s(document.querySelector('#duck-app')).render(react.creat
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [514,348,736], () => (__webpack_require__(7093)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [514,348,736], () => (__webpack_require__(2434)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
