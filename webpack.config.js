@@ -21,7 +21,7 @@ class DevManifestPlugin {
       })
       console.log('\n')
       chunks.forEach(chunk => {
-        console.log(`%chttp://localhost:8080/${chunk}`, 'text-decoration: underline; color: #1677ff')
+        console.log(`%chttp://localhost:8080/${chunk}`)
       })
       callback()
     })

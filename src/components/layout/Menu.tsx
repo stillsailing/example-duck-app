@@ -12,6 +12,14 @@ const items: MenuProps['items'] = [
     label: <Link to='/about'>About</Link>,
     key: 'about',
   },
+  {
+    label: <Link to='/test1'>Test1</Link>,
+    key: 'test1',
+  },
+  {
+    label: <Link to='/test2'>Test2</Link>,
+    key: 'test2',
+  },
 ]
 
 const AppMenu: React.FC = () => {
