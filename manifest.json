@@ -1,7 +1,8 @@
 {
   "main.css": "auto/main.377effa524bff40b9237.css",
-  "main.js": "auto/main.b520f49af016e3bccf3c.js",
-  "main-about.js": "auto/main-about.e981c22c6eb72e34ea97.js",
+  "main.js": "auto/main.e91c39b971d72f5c808e.js",
+  "main-about.js": "auto/main-about.8a3d187e73029c72bde2.js",
+  "main-test.js": "auto/main-test.23fda1648443a48e957c.js",
   "react.js": "auto/react.a8f5f8cc4043f7351599.js",
   "rxjs.js": "auto/rxjs.5c04a193c026cebbe000.js",
   "vendor.js": "auto/vendor.81015bddc69d7808c524.js",
