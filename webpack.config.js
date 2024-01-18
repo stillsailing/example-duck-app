@@ -6,6 +6,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin').WebpackManifestPlugin
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
+const WebpackBarPlugin = require("webpackbar");
 
 class DevManifestPlugin {
   /**
@@ -21,7 +22,7 @@ class DevManifestPlugin {
       })
       console.log('\n')
       chunks.forEach(chunk => {
-        console.log(`%chttp://localhost:8080/${chunk}`)
+        console.log(`http://localhost:8080/${chunk}`)
       })
       callback()
     })
@@ -31,6 +32,7 @@ class DevManifestPlugin {
 const mode = process.env.NODE_ENV
 const isDev = mode === 'development'
 const plugins = [
+  new WebpackBarPlugin(),
   new ManifestPlugin(),
   new FriendlyErrorsWebpackPlugin(),
   new HtmlWebpackPlugin({ template: "./src/template/index.html" }),
