@@ -1,32 +1,32 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin').WebpackManifestPlugin
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
-const WebpackBarPlugin = require("webpackbar");
+const WebpackBarPlugin = require('webpackbar')
 
 class DevManifestPlugin {
   /**
-   * @param {import('webpack').Compiler} compiler 
+   * @param {import('webpack').Compiler} compiler
    */
   apply(compiler) {
     const chunks = []
     compiler.hooks.emit.tapAsync('DevManifestPlugin', (compilation, callback) => {
       compilation.chunks.forEach((chunk) => {
-        chunk.files.forEach(filename => {
+        chunk.files.forEach((filename) => {
           chunks.push(filename)
         })
       })
       console.log('\n')
-      chunks.forEach(chunk => {
+      chunks.forEach((chunk) => {
         console.log(`http://localhost:8080/${chunk}`)
       })
       callback()
     })
-  };
+  }
 }
 
 const mode = process.env.NODE_ENV
@@ -35,7 +35,7 @@ const plugins = [
   new WebpackBarPlugin(),
   new ManifestPlugin(),
   new FriendlyErrorsWebpackPlugin(),
-  new HtmlWebpackPlugin({ template: "./src/template/index.html" }),
+  new HtmlWebpackPlugin({ template: './src/template/index.html' }),
   new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
   new webpack.ProgressPlugin(),
   new webpack.DefinePlugin({
@@ -92,7 +92,7 @@ module.exports = {
           name: 'vendor',
           chunks: 'all',
         },
-      }
+      },
     },
   },
   resolve: {
@@ -100,7 +100,7 @@ module.exports = {
     alias: {
       '@src': path.resolve(__dirname, 'src/'),
       '@src/utils': path.resolve(__dirname, 'src/utils/'),
-    }
+    },
   },
   module: {
     rules: [
@@ -110,8 +110,8 @@ module.exports = {
         use: [
           {
             loader: 'ts-loader',
-          }
-        ]
+          },
+        ],
       },
       {
         include: /node_modules\/redux-logger/,
