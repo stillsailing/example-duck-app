@@ -1,4 +1,7 @@
-import { Base, StreamerMethod, filterAction, reduceFromPayload } from 'observable-duck'
+import { Base } from 'observable-duck'
+import { StreamerMethod } from 'observable-duck/decorator'
+import { filterAction } from 'observable-duck/operator'
+import { reduceFromPayload } from 'observable-duck/helper'
 import { Observable } from 'rxjs'
 import { Action } from 'redux'
 

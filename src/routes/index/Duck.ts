@@ -1,4 +1,7 @@
-import { Base, StreamerMethod, filterAction, reduceFromPayload } from 'observable-duck'
+import { Base } from 'observable-duck'
+import { StreamerMethod } from 'observable-duck/decorator'
+import { filterAction } from 'observable-duck/operator'
+import { reduceFromPayload } from 'observable-duck/helper'
 import { Observable } from 'rxjs'
 import { Action } from 'redux'
 
@@ -9,23 +12,21 @@ export default class Index extends Base {
     }
     return {
       ...Type,
-    };
+    }
   }
   get reducers() {
-    const types = this.types;
+    const types = this.types
     return {
       stamp: reduceFromPayload<number>(types.UPDATE, Date.now()),
       version: (state = '1.0') => state,
-    };
+    }
   }
   @StreamerMethod()
   watchUpdate(action$: Observable<Action>) {
     const duck = this
-    return action$.pipe(
-      filterAction(duck.types.UPDATE),
-    ).subscribe(() => {
+    return action$.pipe(filterAction(duck.types.UPDATE)).subscribe(() => {
       const state = duck.getState()
-      console.log('Personal Updated!');
+      console.log('Personal Updated!')
     })
   }
 }

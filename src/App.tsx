@@ -1,15 +1,19 @@
 import * as React from 'react'
-import { useDuck } from 'observable-duck'
 import AppDuck from './AppDuck'
 import RegisteredRouter from '@src/routes/RegisteredRouter'
 import AppMenu from './components/layout/Menu'
 import { Layout, Flex } from 'antd'
 import './app.css'
+import { ConnectedProps } from 'observable-duck'
 
 const { Header, Footer, Content } = Layout
 
-export default function App() {
-  const { duck, store, dispatch } = useDuck(AppDuck)
+interface AppProps extends ConnectedProps<AppDuck> {
+  version: number
+}
+
+export default function App(props: AppProps) {
+  const { duck, store, dispatch } = props
   return (
     <Flex justify='center'>
       <Layout className='app-layout'>
@@ -19,7 +23,10 @@ export default function App() {
         <Content className='app-content'>
           <RegisteredRouter />
         </Content>
-        <Footer className='app-footer'>Footer</Footer>
+        <Footer className='app-footer'>
+          Footer * Init Version [{props.version}] * Duck Stamp[{store.stamp}]{' '}
+          <button onClick={() => dispatch(duck.creators.update())}>update</button>
+        </Footer>
       </Layout>
     </Flex>
   )

@@ -45,7 +45,7 @@ const plugins = [
 ]
 if (isDev) {
   plugins.push(new webpack.HotModuleReplacementPlugin())
-  plugins.push(new DevManifestPlugin())
+  // plugins.push(new DevManifestPlugin())
 } else {
   plugins.push(new CssMinimizerPlugin())
   plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }))

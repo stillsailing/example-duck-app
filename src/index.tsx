@@ -5,6 +5,10 @@ import { ConfigProvider, App as AntdApp, theme } from 'antd'
 import reportWebVitals from './plugin/report'
 import loadDarkMode from './plugin/darkmode'
 import App from './App'
+import AppDuck from './AppDuck'
+import connect from './utils/connect'
+
+const AppDuckComponent = connect(AppDuck, App)
 
 reportWebVitals(console.log)
 loadDarkMode()
@@ -13,7 +17,7 @@ ReactDom.createRoot(document.querySelector('#duck-app')).render(
   <BrowserRouter basename={process.env.BASENAME || ''}>
     <ConfigProvider theme={{ algorithm: theme.defaultAlgorithm }}>
       <AntdApp>
-        <App />
+        <AppDuckComponent version={Date.now()} />
       </AntdApp>
     </ConfigProvider>
   </BrowserRouter>
