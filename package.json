@@ -1,14 +1,14 @@
 {
   "scripts": {
-    "dev": "NODE_ENV=development webpack serve",
-    "build": "NODE_ENV=production webpack",
-    "build-github": "NODE_ENV=production BASENAME=example-duck-app webpack"
+    "dev": "NODE_ENV=development rspack serve",
+    "build": "NODE_ENV=production rspack",
+    "build-analyze": "NODE_ENV=production rspack build --analyze",
+    "build-github": "NODE_ENV=production BASENAME=example-duck-app rspack"
   },
   "dependencies": {
     "antd": "^5.12.8",
-    "darkmode-js": "^1.5.7",
     "example-duck-app": "link:",
-    "observable-duck": "1.0.0-alpha.12",
+    "observable-duck": "1.0.0-alpha.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
@@ -26,7 +26,11 @@
     "@babel/preset-env": "^7.23.7",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@rspack/cli": "^1.1.8",
+    "@rspack/core": "^1.1.8",
+    "@rspack/plugin-react-refresh": "^1.0.1",
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
+    "@swc/helpers": "^0.5.15",
     "@types/node": "^22.0.3",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
@@ -40,14 +44,12 @@
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.7.7",
     "prettier": "^3.2.2",
+    "react-refresh": "^0.16.0",
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.3.3",
-    "webpack": "^5.89.0",
+    "typescript": "^5.7.2",
     "webpack-bundle-analyzer": "^4.10.1",
-    "webpack-cli": "^5.1.4",
     "webpack-dashboard": "^3.3.8",
-    "webpack-dev-server": "^4.15.1",
     "webpack-manifest-plugin": "^5.0.0",
     "webpackbar": "^6.0.0"
   }

@@ -3,6 +3,7 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "jsx": "react",
     "target": "ES2015",
