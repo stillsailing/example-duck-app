@@ -2,6 +2,7 @@ const path = require('path')
 const rspack = require('@rspack/core')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ReactRefreshPlugin = require('@rspack/plugin-react-refresh')
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
 
 const mode = process.env.NODE_ENV
 const isDev = mode === 'development'
@@ -14,6 +15,7 @@ const plugins = [
     'process.env.NODE_ENV': JSON.stringify(mode),
     'process.env.BASENAME': JSON.stringify(process.env.BASENAME),
   }),
+  new FriendlyErrorsWebpackPlugin(),
 ]
 if (!isDev) {
   plugins.push(new CssMinimizerPlugin())
