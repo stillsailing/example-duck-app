@@ -1,10 +1,10 @@
 import * as React from 'react'
 import RegisteredRouter from '@/main/RegisteredRouter'
 import useStore from '@hook/useStore'
-import { RootStore } from './store'
+import { RootStore } from '@store'
 import { useNavigate } from 'react-router-dom'
 
-export default function App() {
+export default function Main() {
   const { state } = useStore(RootStore)
 
   const navigate = useNavigate()
