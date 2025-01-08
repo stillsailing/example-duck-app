@@ -6,8 +6,6 @@
     "build-github": "NODE_ENV=production BASENAME=example-duck-app rspack"
   },
   "dependencies": {
-    "antd": "^5.12.8",
-    "example-duck-app": "link:",
     "observable-duck": "1.0.0-alpha.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,6 +29,7 @@
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@types/redux-logger": "^3.0.12",
+    "autoprefixer": "^10.4.20",
     "css-loader": "^6.9.0",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "eslint": "^8.56.0",
@@ -38,10 +37,12 @@
     "eslint-plugin-prettier": "^5.1.3",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.7.7",
+    "postcss": "^8.4.49",
+    "postcss-loader": "^8.1.1",
     "prettier": "^3.2.2",
     "react-refresh": "^0.16.0",
     "style-loader": "^3.3.4",
-    "typescript": "^5.7.2",
-    "webpack-bundle-analyzer": "^4.10.1"
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
   }
 }

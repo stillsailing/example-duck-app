@@ -37,6 +37,9 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
   },
+  experiments: {
+    css: true,
+  },
   optimization: {
     splitChunks: {
       chunks: 'all',
@@ -124,8 +127,20 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [rspack.CssExtractRspackPlugin.loader, 'css-loader'],
-        type: 'javascript/auto',
+        use: [
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: {
+                  tailwindcss: {},
+                  autoprefixer: {},
+                },
+              },
+            },
+          },
+        ],
+        type: 'css',
       },
     ],
   },

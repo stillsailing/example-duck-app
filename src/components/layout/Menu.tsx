@@ -1,33 +1,39 @@
 import * as React from 'react'
-import type { MenuProps } from 'antd'
-import { Menu } from 'antd'
 import { Link } from 'react-router-dom'
 
-const items: MenuProps['items'] = [
+const items = [
   {
-    label: <Link to='/'>Main</Link>,
-    key: 'main',
+    route: '/',
+    title: 'Main',
   },
   {
-    label: <Link to='/about'>About</Link>,
-    key: 'about',
+    route: '/about',
+    title: 'About',
   },
   {
-    label: <Link to='/test1'>Test1</Link>,
-    key: 'test1',
+    route: '/test1',
+    title: 'Test1',
   },
   {
-    label: <Link to='/test2'>Test2</Link>,
-    key: 'test2',
+    route: '/test2',
+    title: 'Test2',
   },
 ]
 
 const AppMenu: React.FC = () => {
   const [current, setCurrent] = React.useState('main')
-  const onClick: MenuProps['onClick'] = (e) => {
+  const onClick = (e) => {
     setCurrent(e.key)
   }
-  return <Menu onClick={onClick} selectedKeys={[current]} mode='horizontal' items={items} />
+  return (
+    <nav className='m-4 shadow-sm'>
+      {items.map(({ route, title }) => (
+        <Link key={route} to={route}>
+          {title}
+        </Link>
+      ))}
+    </nav>
+  )
 }
 
 export default AppMenu
