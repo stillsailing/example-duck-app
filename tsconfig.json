@@ -13,6 +13,9 @@
     "paths": {
       "@src/*": ["src/*"],
       "@src/utils/*": ["src/utils/*"],
+      "@layout/*": ["src/layout/*"],
+      "@duck/*": ["src/duck/*"],
+      "@hook/*": ["src/hook/*"],
     },
   },
   "include": ["src/**/*", "node_modules/@types/*"],

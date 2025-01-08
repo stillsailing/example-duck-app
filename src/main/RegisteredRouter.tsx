@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Spin from '../components/layout/Spin'
+import Spin from '../components/Spin'
 import NotFound from './404/Index'
 import Index from './index'
 

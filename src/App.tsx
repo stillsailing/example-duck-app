@@ -1,30 +1,20 @@
 import * as React from 'react'
-import AppDuck from './AppDuck'
-import RegisteredRouter from '@src/routes/RegisteredRouter'
-import AppMenu from './components/layout/Menu'
-import './app.css'
-import { ConnectedProps } from 'observable-duck'
+import RegisteredRouter from '@src/main/RegisteredRouter'
+import useStore from '@hook/useStore'
+import { RootStore } from './store'
+import { useNavigate } from 'react-router-dom'
 
-interface AppProps extends ConnectedProps<AppDuck> {
-  version: number
-}
+export default function App() {
+  const { state } = useStore(RootStore)
 
-export default function App(props: AppProps) {
-  const { duck, store, dispatch } = props
+  const navigate = useNavigate()
+  React.useEffect(() => {
+    navigate(state.route.path)
+  }, [state.route.path])
+
   return (
     <div className='justify-center'>
-      <div className='app-layout'>
-        <header className='app-header'>
-          <AppMenu />
-        </header>
-        <main className='app-content'>
-          <RegisteredRouter />
-        </main>
-        <footer className='app-footer'>
-          Footer * Init Version [{props.version}] * Duck Stamp[{store.stamp}]{' '}
-          <button onClick={() => dispatch(duck.creators.update())}>update</button>
-        </footer>
-      </div>
+      <RegisteredRouter />
     </div>
   )
 }
