@@ -2,7 +2,7 @@ import * as React from 'react'
 import classnames from 'classnames'
 import { Menus } from './menus'
 import useStore from '@hook/useStore'
-import { RootStore } from '@src/store'
+import { RootStore } from '@store'
 
 const Header: React.FC = () => {
   const { duck, state, dispatch } = useStore(RootStore)

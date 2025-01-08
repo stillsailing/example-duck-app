@@ -1,10 +1,5 @@
 import { Base } from 'observable-duck'
-import { reduceFromPayload } from 'observable-duck/helper'
-import { Action } from 'observable-duck/decorator'
-import { take } from 'observable-duck/operator'
-import { Observable } from 'rxjs'
-import { Action as ReduxAction } from 'redux'
-import Route from '@src/duck/Route'
+import Route from '@duck/Route'
 
 export default class Root extends Base {
   get quickTypes() {
