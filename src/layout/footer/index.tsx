@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 const Footer: React.FC = () => {
-  return <nav className='m-4 shadow-sm'>footer</nav>
+  return <div className='p-4 bg-slate-400 text-white'>footer</div>
 }
 
 export default Footer
