@@ -31,11 +31,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    filename: '[name].[contenthash].js',
+    filename: isDev ? '[name].js' : '[name].[contenthash].js', // 开发模式下在 chunkName 中包含 [hash] 或者 [contenthash]，可能会导致 HMR 不生效。
   },
   stats: 'summary',
   devServer: {
     historyApiFallback: true,
+    hot: true,
   },
   experiments: {
     css: true,
