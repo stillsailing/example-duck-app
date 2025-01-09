@@ -3,7 +3,7 @@
     "dev": "NODE_ENV=development rspack serve",
     "build": "NODE_ENV=production rspack",
     "build-analyze": "NODE_ENV=production rspack build --analyze",
-    "build-github": "NODE_ENV=production BASENAME=example-duck-app rspack"
+    "build-github": "NODE_ENV=production BASENAME=example-duck-app rspack build"
   },
   "dependencies": {
     "classnames": "^2.5.1",
