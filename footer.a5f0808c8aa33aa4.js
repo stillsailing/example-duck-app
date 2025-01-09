@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([["501"],{710:function(e,t,n){n.r(t),n.d(t,{default:function(){return r}});var u=n(5271);let r=function(){return u.createElement("div",{className:"p-4 bg-slate-400 text-white"},"footer")}}}]);
