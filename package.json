@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "observable-duck": "1.0.0-alpha.13",
+    "observable-duck": "1.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^6.21.2",

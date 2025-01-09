@@ -1,5 +1,5 @@
 import { Base } from 'observable-duck'
-import Route from '@duck/Route'
+import Route from '@/duck/Route'
 
 export default class Root extends Base {
   get quickTypes() {

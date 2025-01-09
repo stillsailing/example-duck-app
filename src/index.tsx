@@ -1,14 +1,14 @@
 import * as React from 'react'
 import * as ReactDom from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import reportWebVitals from './plugin/report'
+import reportWebVitals from '@/plugin/report'
 import Main from '@/main/Main'
-import './main.css'
+import './index.css'
 
 reportWebVitals(console.log)
 
-const Header = React.lazy(() => import(/* webpackChunkName: "header" */ '@layout/header'))
-const Footer = React.lazy(() => import(/* webpackChunkName: "footer" */ '@layout/footer'))
+const Header = React.lazy(() => import(/* webpackChunkName: "header" */ '@/layout/header'))
+const Footer = React.lazy(() => import(/* webpackChunkName: "footer" */ '@/layout/footer'))
 
 ReactDom.createRoot(document.querySelector('#app-header')).render(<Header />)
 ReactDom.createRoot(document.querySelector('#app-footer')).render(<Footer />)

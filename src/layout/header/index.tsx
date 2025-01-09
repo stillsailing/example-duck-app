@@ -1,11 +1,11 @@
 import * as React from 'react'
 import classnames from 'classnames'
+import { useStore } from 'observable-duck/react'
+import { RootStore } from '@/store'
 import { Menus } from './menus'
-import useStore from '@hook/useStore'
-import { RootStore } from '@store'
 
 const Header: React.FC = () => {
-  const { duck, state, dispatch } = useStore(RootStore)
+  const { duck, store, dispatch } = useStore(RootStore)
   return (
     <nav className='p-4 flex items-center justify-start gap-4'>
       {Menus.map(({ route, title }) => (
@@ -16,7 +16,7 @@ const Header: React.FC = () => {
             e.preventDefault()
             dispatch(duck.ducks.route.creators.set(route))
           }}
-          className={classnames(state.route.path === route && 'text-blue-500')}
+          className={classnames(store.route.path === route && 'text-blue-500')}
         >
           {title.toUpperCase()}
         </a>

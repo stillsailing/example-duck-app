@@ -12,12 +12,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@utils/*": ["src/utils/*"],
-      "@layout/*": ["src/layout/*"],
-      "@duck/*": ["src/duck/*"],
-      "@hook/*": ["src/hook/*"],
-      "@store": ["src/store/index"],
-      "@store/*": ["src/store/*"],
     },
   },
   "include": ["src/**/*", "node_modules/@types/*"],
