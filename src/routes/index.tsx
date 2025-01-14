@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Routes, Route } from 'react-router'
 
 import HomeLayout from '@/layout/HomeLayout'
-import AsideLayout from '@/layout/AsideLayout'
+import SideLayout from '@/layout/SideLayout'
 import Spin from '@/components/Spin'
 
 import NotFound from './404'
@@ -20,7 +20,7 @@ export default function AppRoutes() {
           />
           <Route path='*' Component={NotFound} />
         </Route>
-        <Route Component={AsideLayout}>
+        <Route Component={SideLayout}>
           <Route path='/step'>
             <Route
               index
@@ -48,11 +48,21 @@ export default function AppRoutes() {
             />
             <Route
               path='/step/test1'
-              Component={React.lazy(() => import(/* webpackChunkName: "main-test" */ './test1'))}
+              Component={React.lazy(
+                () => import(/* webpackChunkName: "main-test" */ './step/test1')
+              )}
             />
             <Route
               path='/step/test2'
-              Component={React.lazy(() => import(/* webpackChunkName: "main-test" */ './test2'))}
+              Component={React.lazy(
+                () => import(/* webpackChunkName: "main-test" */ './step/test2')
+              )}
+            />
+            <Route
+              path='/step/error'
+              Component={React.lazy(
+                () => import(/* webpackChunkName: "main-test" */ './step/Error')
+              )}
             />
           </Route>
         </Route>

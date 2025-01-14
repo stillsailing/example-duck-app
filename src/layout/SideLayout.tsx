@@ -4,6 +4,7 @@ import { useStore } from 'observable-duck/react'
 import { RootStore } from '@/store'
 import { Menus } from '@/data/menus'
 import { Link, Outlet } from 'react-router'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 const aside = [
   {
@@ -26,9 +27,13 @@ const aside = [
     route: '/step/test2',
     title: 'Test2',
   },
+  {
+    route: '/step/error',
+    title: 'Error',
+  },
 ]
 
-const AsideLayout: React.FC = () => {
+const SideLayout: React.FC = () => {
   const { duck, store, dispatch } = useStore(RootStore)
   return (
     <div className='relative min-h-screen space-y-4 py-4'>
@@ -54,7 +59,9 @@ const AsideLayout: React.FC = () => {
           ))}
         </nav>
         <div className='flex-1'>
-          <Outlet />
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
         </div>
       </main>
       <footer className='absolute bottom-0 w-full pb-4'>
@@ -64,4 +71,4 @@ const AsideLayout: React.FC = () => {
   )
 }
 
-export default AsideLayout
+export default SideLayout

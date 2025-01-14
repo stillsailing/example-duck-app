@@ -10,6 +10,7 @@
     "observable-duck": "1.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-error-boundary": "^5.0.0",
     "react-router": "^7.1.1",
     "redux": "^5.0.1",
     "redux-logger": "^3.0.6",
