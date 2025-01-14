@@ -1,18 +1,14 @@
 export const Menus = [
   {
     route: '/',
-    title: 'Main',
+    title: 'Home',
+  },
+  {
+    route: '/step',
+    title: 'Step',
   },
   {
     route: '/about',
     title: 'About',
-  },
-  {
-    route: '/test1',
-    title: 'Test1',
-  },
-  {
-    route: '/test2',
-    title: 'Test2',
   },
 ]

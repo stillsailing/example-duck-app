@@ -5,19 +5,19 @@ import { RootStore } from '@/store'
 import { Menus } from '@/data/menus'
 import { Link, Outlet } from 'react-router'
 
-const NavLayout: React.FC = () => {
+const HomeLayout: React.FC = () => {
   const { duck, store, dispatch } = useStore(RootStore)
   return (
-    <div>
-      <header>
-        <nav className='p-4 flex items-center justify-start gap-4'>
+    <div className='relative min-h-screen space-y-4 py-4'>
+      <header className='shadow rounded'>
+        <nav className='px-4 py-2 flex items-center justify-start gap-4'>
           {Menus.map(({ route, title }) => (
             <Link
               key={route}
               to={route}
               className={classnames(store.route.path === route && 'text-blue-500')}
             >
-              {title.toUpperCase()}
+              {title}
             </Link>
           ))}
         </nav>
@@ -25,9 +25,11 @@ const NavLayout: React.FC = () => {
       <main>
         <Outlet />
       </main>
-      <footer className='p-4 bg-slate-400 text-white'>footer</footer>
+      <footer className='absolute bottom-0 w-full pb-4'>
+        <div className='flex items-center justify-center p-4 rounded shadow'>footer</div>
+      </footer>
     </div>
   )
 }
 
-export default NavLayout
+export default HomeLayout

@@ -7,7 +7,7 @@ export default function Index(props: ConnectedProps<Duck>) {
   const [state, setState] = React.useState(true)
   return (
     <>
-      <h2>Index Page</h2>
+      <h2>Home Page</h2>
     </>
   )
 }
