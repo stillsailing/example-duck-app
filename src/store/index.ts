@@ -1,7 +1,5 @@
 import { Store } from 'observable-duck'
-import Root from './Root'
 import logger from '@/plugin/logger'
+import Root from './Root'
 
-export const RootStore = Store.create(Root, {
-  middlewares: [logger],
-})
+export const RootStore = new Store(Root, { middlewares: [logger] })

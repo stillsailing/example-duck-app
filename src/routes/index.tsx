@@ -1,15 +1,18 @@
 import * as React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Spin from '../components/Spin'
-import NotFound from './404/Index'
-import Index from './index'
+import { Routes, Route } from 'react-router'
 
-export default function RegisteredRouter() {
+import NavLayout from '@/layout/NavLayout'
+import Spin from '@/components/Spin'
+
+import NotFound from './404'
+import Home from './home'
+
+export default function AppRoutes() {
   return (
     <React.Suspense fallback={<Spin />}>
       <Routes>
-        <Route path='/'>
-          <Route index Component={Index} />
+        <Route path='/' Component={NavLayout}>
+          <Route index Component={Home} />
           <Route
             path='about'
             Component={React.lazy(() => import(/* webpackChunkName: "main-about" */ './about'))}
