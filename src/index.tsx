@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router'
 import reportWebVitals from '@/plugin/report'
 import Routes from '@/routes'
 
+import '@/i18n'
+
 import '@/css/tailwind.css'
 import '@/css/base.css'
 

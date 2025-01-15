@@ -4,12 +4,13 @@ import { useStore } from 'observable-duck/react'
 import { RootStore } from '@/store'
 import { Menus } from '@/data/menus'
 import { Link, Outlet } from 'react-router'
+import LanguageSelect from '@/components/Language'
 
 const HomeLayout: React.FC = () => {
   const { duck, store, dispatch } = useStore(RootStore)
   return (
     <div className='relative min-h-screen space-y-4 py-4'>
-      <header className='shadow rounded'>
+      <header className='shadow rounded flex justify-between items-center'>
         <nav className='px-4 py-2 flex items-center justify-start gap-4'>
           {Menus.map(({ route, title }) => (
             <Link
@@ -21,6 +22,7 @@ const HomeLayout: React.FC = () => {
             </Link>
           ))}
         </nav>
+        <LanguageSelect className='mx-4' />
       </header>
       <main>
         <Outlet />

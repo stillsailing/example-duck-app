@@ -1,5 +1,7 @@
 import { Base } from 'observable-duck'
+
 import Route from './duck/Route'
+import Language from './duck/Language'
 
 export default class Root extends Base {
   get quickTypes() {
@@ -21,6 +23,7 @@ export default class Root extends Base {
   get quickDucks() {
     return {
       route: Route,
+      lang: Language,
     }
   }
 }

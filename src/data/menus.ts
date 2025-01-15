@@ -1,3 +1,5 @@
+import { t } from '@/i18n'
+
 export const Menus = [
   {
     route: '/',
@@ -9,6 +11,6 @@ export const Menus = [
   },
   {
     route: '/about',
-    title: 'About',
+    title: t('关于'),
   },
 ]
