@@ -13,4 +13,8 @@ export const Menus = [
     route: '/about',
     title: t('关于'),
   },
+  {
+    route: '/form',
+    title: t('Form'),
+  },
 ]

@@ -19,6 +19,10 @@ export default function AppRoutes() {
             Component={React.lazy(() => import(/* webpackChunkName: "main-about" */ './about'))}
           />
           <Route path='*' Component={NotFound} />
+          <Route
+            path='/form'
+            Component={React.lazy(() => import(/* webpackChunkName: "main-form" */ './form'))}
+          />
         </Route>
         <Route Component={SideLayout}>
           <Route path='/step'>

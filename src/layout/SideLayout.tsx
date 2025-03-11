@@ -51,13 +51,13 @@ const SideLayout: React.FC = () => {
         </nav>
       </header>
       <main className='flex gap-8'>
-        <nav className='flex flex-col p-4 shadow rounded min-w-48'>
+        <aside className='flex flex-col p-4 shadow rounded min-w-48'>
           {aside.map(({ route, title }) => (
             <Link key={route} to={route}>
               {title}
             </Link>
           ))}
-        </nav>
+        </aside>
         <div className='flex-1'>
           <ErrorBoundary>
             <Outlet />
